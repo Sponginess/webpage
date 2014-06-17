@@ -116,6 +116,22 @@ class Add(webapp2.RequestHandler):
 		
 		content.put();
 		self.redirect('/add')
+		
+class SleepArea(webapp2.RequestHandler):
+	def get(self):
+		area_input = self.request.get('area')
+		area_info = Location.query(Location.area==area_input)
+		area = area_info.fetch().pop()
+		template = jinja_environment.get_template('area-sleep.html')
+		template_values = {
+			'AreaName': area_input,
+			'FacultyName': area.faculty.upper(),
+			'sofas': area.sofas,
+			'tables': area.tables,
+			'beds': area.beds
+		}
+		self.response.write(template.render(template_values))
+		
 
 class Location(ndb.Model):
 	date = ndb.DateTimeProperty(auto_now_add=True)
@@ -143,6 +159,6 @@ app = webapp2.WSGIApplication([('/', MainPage),
 								('/poop', Poop),
 								('/add', Add),
 								('/edit', Add),
-								('/area', Area),
-								('/sleep-choose', SleepChoose)],
+								('/sleep-choose', SleepChoose),
+								('/submit-area', SleepArea)],
 								debug=True)

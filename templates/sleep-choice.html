@@ -7,6 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="css/logo-nav.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/style-sleep.css"/>
 		<title>SecondHome</title>
   </head>
 
@@ -40,11 +41,10 @@
 		<!--Content
 		======================================================-->
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
+			<div class="row row-header">
+				<div class="col-md-8">
 					<h1>{{ faculty_name }}</h1>
 				</div>
-				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<form class="form-inline" id="select-faculty" action="/sleep-choose" method="get">
 						<h2>I also wanna SLEEP at</h2>
@@ -70,33 +70,27 @@
 				</div>
 				
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div id="info">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th class="col-md-8">Name of Area</th>
-									<th class="col-md-4"></th>
-								</tr>
-							</thead>
-							<tbody>
-								{%if locations|length > 0 %}
-								{% for location in locations %}			
-								<tr class="clickableRow" href="/area">
-									<td>{{ location.area }}</td><td><img src="http://placehold.it/500x300"/></td>
-								</tr>
-								{% endfor %}
-								{% else %}
-								<tr>
-									<td>This faculty has no suitable areas for this activity</td>
-								</tr>
-								{% endif %}
-							</tbody>
-						</table>
-					</div>
+			{%if locations|length > 0 %}
+			{% for location in locations %}		
+			<div class="row row-table row-valid">
+				<div class="col-md-7">
+					<h4>{{ location.area }}</h4>
 				</div>
+				<div class="col-md-5">
+					<img src="http://placehold.it/460x300"/>
+				</div>
+				<form action="/submit-area" method="get">
+					<input name="area" type="hidden" value="{{location.area}}">
+				</form>
 			</div>
+			{% endfor %}
+			{% else %}
+			<div class="row row-table">
+				<div class="col-md-12">
+					<h4>This faculty has no suitable areas for this activity</h4>
+				</div>
+			</div>					
+			{% endif %}					
 		</div>
 
 		
@@ -118,14 +112,13 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/contentHover.js"></script>
-		<script type="text/javascript">
+		<script>
 			$(document).ready(function() {
-				$(".clickableRow").click(function() {
-					window.document.location = $(this).attr("href");
+				$('.row-valid').click(function() {
+					$(this).children('form').submit();
 				});
 			});
 		</script>
-		<script src="dist/jquery.validate.js"></script>
   </body>
 
 </html>
