@@ -8,6 +8,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 		<link type="text/css" rel="stylesheet" href="css/style-sleep.css"/>
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 		<title>SecondHome</title>
   </head>
 
@@ -79,8 +80,8 @@
 				<div class="col-md-5">
 					<img src="http://placehold.it/460x300"/>
 				</div>
-				<form action="/submit-area" method="get">
-					<input name="area" type="hidden" value="{{location.area}}">
+				<form action="/submit-sleep-area" method="get">
+					<input name="sleep-area" type="hidden" value="{{location.area}}">
 				</form>
 			</div>
 			{% endfor %}

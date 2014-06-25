@@ -7,6 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="css/logo-nav.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 		<title>SecondHome</title>
   </head>
 
@@ -44,26 +45,27 @@
 				<div class="col-md-3">
 					<img class="img-responsive" src="img/poopsmall.png"/>
 				</div>
+				
 				<div class="col-md-9">
 					<h3>I wanna POOP at</h3>
-					<form class="form-horizontal">
+					<form class="form-horizontal" id="select-faculty" method="get" action="/poop-choose">
 						<div class="form-group">
 							<div class="col-sm-4">
-									<select class="form-control" >
-										<option disabled selected>Select your faculty</option>
-										<option>Arts and Social Sciences</option>
-										<option>Business</option>
-										<option>Computing</option>
-										<option>Design and Environment</option>
-										<option>Engineering</option>
-										<option>Music</option>
-										<option>Science</option>
-										<option>Utown</option>
-									</select>
+								<select class="form-control" name="poop-select">
+									<option value="everywhere">EVERYWHERE</option>
+									<option value="arts and social sciences">Arts and Social Sciences</option>
+									<option value="business">Business</option>
+									<option value="computing">Computing</option>
+									<option value="design and environment">Design and Environment</option>
+									<option value="engineering">Engineering</option>
+									<option value="music">Music</option>
+									<option value="science">Science</option>
+									<option value="utown">Utown</option>
+								</select>
 				
 							</div>
 						</div>
-						
+						<button class="btn btn-danger" id="toggle" type="submit">Show me where!</button>
 					</form>
 
 				</div>
@@ -89,14 +91,6 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/contentHover.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#d1, #d2, #d3, #d4').contenthover({
-					overlay_background:'gold',
-					overlay_opacity:1.0
-				});
-			});
-		</script>
   </body>
 
 </html>

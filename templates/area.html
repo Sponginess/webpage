@@ -7,7 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
-		
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 		<title>SecondHome</title>
   </head>
 
@@ -28,10 +28,10 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
-						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
-						<li><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
-						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
+						<li><a id="sleep" href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
+						<li><a id="shop" href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
+						<li><a id="study" href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li><a id="poop" href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
 						<li><a href="/contact" class="nav-options active" ><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
 				</div>
@@ -47,11 +47,11 @@
 					<h1>{{ FacultyName }}</h1>
 				</div>
 				<div class="col-md-4">
-					<form class="form-inline" id="select-faculty" action="/sleep-choose" method="get">
-						<h2>I also wanna SLEEP at</h2>
+					<form class="form-inline" id="select-faculty" action="/{{activity|lower}}-choose" method="get">
+						<h2>I also wanna {{activity|upper}} at</h2>
 						<div class="form-group">
 							<div class="col-sm-4">
-								<select class="form-control" name="sleep-select">
+								<select class="form-control" name="{{activity|lower}}-select">
 									<option value="everywhere">EVERYWHERE</option>
 									<option value="arts and social sciences">Arts and Social Sciences</option>
 									<option value="business">Business</option>
@@ -141,13 +141,9 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/contentHover.js"></script>
-		<script type="text/javascript">
+		<script>
 			$(document).ready(function() {
-				$('#d1, #d2, #d3, #d4').contenthover({
-					overlay_background:'gold',
-					overlay_opacity:1.0
-				});
+				$("#{{activity|lower}}").parent().addClass("active");
 			});
 		</script>
   </body>

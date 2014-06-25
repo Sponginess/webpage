@@ -19,12 +19,51 @@ indexes:
 - kind: Location
   properties:
   - name: faculty
+  - name: poop
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
+  - name: faculty
+  - name: shop
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
+  - name: faculty
   - name: sleep
   - name: date
     direction: desc
 
 - kind: Location
   properties:
+  - name: faculty
+  - name: study
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
+  - name: poop
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
+  - name: shop
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
   - name: sleep
+  - name: date
+    direction: desc
+
+- kind: Location
+  properties:
+  - name: study
   - name: date
     direction: desc
