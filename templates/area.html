@@ -28,46 +28,24 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a id="sleep" href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
-						<li><a id="shop" href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a id="study" href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li><a id="shop" href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a id="poop" href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
-						<li><a href="/contact" class="nav-options active" ><i class="fa fa-envelope"></i> Contact</a></li>
+						<li><a href="/contact" class="nav-options" ><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		{% block sidebar %}
+		{% endblock %}
 		<!--Faculty Menu
 		======================================================-->
 		
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
-					<h1>{{ FacultyName }}</h1>
-				</div>
-				<div class="col-md-4">
-					<form class="form-inline" id="select-faculty" action="/{{activity|lower}}-choose" method="get">
-						<h2>I also wanna {{activity|upper}} at</h2>
-						<div class="form-group">
-							<div class="col-sm-4">
-								<select class="form-control" name="{{activity|lower}}-select">
-									<option value="everywhere">EVERYWHERE</option>
-									<option value="arts and social sciences">Arts and Social Sciences</option>
-									<option value="business">Business</option>
-									<option value="computing">Computing</option>
-									<option value="design and environment">Design and Environment</option>
-									<option value="engineering">Engineering</option>
-									<option value="music">Music</option>
-									<option value="science">Science</option>
-									<option value="utown">Utown</option>
-								</select>
-				
-							</div>
-						</div>
-						<button class="btn btn-danger" id="toggle" type="submit">GO!</button>
-					</form>
-
+				<div class="col-md-12">
+					<h1>{{Area.faculty|upper}}</h1>
 				</div>
 			</div>
 		</div>
@@ -78,46 +56,15 @@
 			</div>
 		</div>
 		
+		
+		
 		<!--Content
 		======================================================-->
 		<div class="container">
-			<h2 class="location">{{AreaName}}</h2>
+			<h2 class="location">{{Area.area}}</h2>
 			<div class="row">
-				<div class="col-md-7">	
-					{% block start %}
-					{% endblock %}			
-				</div>
-				<div class="col-md-5">
-				
-					<!--Carousel-->
-					<div id="myCarousel" class="carousel slide">
-					
-						<ol class="carousel-indicators">
-							<li data-target="myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="myCarousel" data-slide-to="1"></li>
-							<li data-target="myCarousel" data-slide-to="2"></li>
-						</ol>
-						
-						<div class="carousel-inner">
-							<div class="item active">
-								<img src="http://placehold.it/460x300"/>
-							</div>
-							<div class="item">
-								<img src="http://placehold.it/460x300"/>
-							</div>
-							<div class="item">
-								<img src="http://placehold.it/460x300"/>
-							</div>
-						
-						</div>
-						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-						</a>
-						<a class="right carousel-control" href="#myCarousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
-					
-					</div>
+					{% block content %}
+					{% endblock %}
 				</div>
 			</div>
 		</div>
@@ -144,6 +91,15 @@
 		<script>
 			$(document).ready(function() {
 				$("#{{activity|lower}}").parent().addClass("active");
+				$('.sidebar').hover(function() {
+					$(this).stop().animate({right: '-20px'});
+					$(this).find('.pull').stop().fadeOut();
+					$(this).find('.select-faculty').stop().fadeIn();
+				}, function() {
+					$(this).stop().animate({right: '-260px'});
+					$(this).find('.pull').stop().fadeIn();
+					$(this).find('.select-faculty').stop().fadeOut();
+				});
 			});
 		</script>
   </body>

@@ -29,9 +29,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
-						<li class="active"><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li class="active"><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
+
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
 						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
@@ -39,46 +39,126 @@
 			</div>
 		</div>
 		
+		<!--Sidebar 1
+		======================================================-->
+		<div class="sidebar" id="sidebar1">
+			<p class="pull" id="pull1">Sort By</p>
+			<form hidden class="form-horizontal select-faculty" method="get" action="/shop-sort">
+				<h4>Sort By</h4>
+				<div class="form-group">
+					<select class="form-control" id="select-sort" name="shop-sort">
+						<option value="alphabetical order">Alphabetical Order</option>
+						<option value="date">Date Start</option>
+						<option value="rating">Rating</option>
+					</select>
+					<p hidden id="note1" class="note"><br>*'Date Start' is only applicable to bazaars<br>
+						Shops that are not bazaars are removed</p>
+					<p hidden id="note2" class="note"><br>*'Rating' is only applicable to food outlets<br>
+						Shops that are not food outlets are removed</p>
+				</div>
+				<div class="form-group">
+					<div class="radio">
+					  <label>
+						<input type="radio" name="order-shop" value="ascending order" checked>
+						Ascending Order
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+						<input type="radio" name="order-shop" value="descending order">
+						Descending Order
+					  </label>
+					</div>
+				</div>
+				
+				<input name="shop-select" type="hidden" value="{{faculty_name|lower}}">
+				<input name="wantsBazaars" type="hidden" value="{{bazaars}}">
+				<input name="wantsFood" type="hidden" value="{{food}}">
+				<input name="wantsBooks" type="hidden" value="{{books}}">
+				
+				{% if locations|length > 0%}
+				<input name="canSort" type="hidden" value="on">
+				{% else %}
+				<input name="canSort" type="hidden" value="">
+				{% endif %}
+				
+				<button class="btn btn-danger" id="toggle" type="submit">Sort</button>
+				<button class="btn btn-default" id="toggle" type="reset">Clear</button>
+			</form>
+		</div>
+		
+		
+		<!--Sidebar 2
+		======================================================-->
+		<div class="sidebar" id="sidebar2">
+			<p class="pull" id="pull2">Choose another faculty!</p>
+			<form hidden class="form-horizontal select-faculty" method="get" action="/shop-choose">
+				<h4>Choose another faculty!</h4>
+				<div class="form-group">
+					<select class="form-control" id="select-pull" name="shop-select">
+						<option value="everywhere">EVERYWHERE</option>
+						<option value="arts and social sciences">Arts and Social Sciences</option>
+						<option value="business">Business</option>
+						<option value="computing">Computing</option>
+						<option value="design and environment">Design and Environment</option>
+						<option value="engineering">Engineering</option>
+						<option value="music">Music</option>
+						<option value="science">Science</option>
+						<option value="utown">Utown</option>
+					</select>
+				</div>
+				<h4>Filter by:</h4>
+					<div class="form-group shop-type">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="wantsBazaars"> Bazaars
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="wantsFood"> Food Outlets
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="wantsBooks"> Bookshops
+							</label>
+						</div>
+					</div>
+				<button class="btn btn-danger" id="toggle" type="submit">GO!</button>
+				<button class="btn btn-default" id="toggle" type="reset">Clear</button>
+			</form>
+		</div>
+		
+		
 		<!--Content
 		======================================================-->
 		<div class="container">
 			<div class="row row-header">
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<h1>{{ faculty_name }}</h1>
 				</div>
-				<div class="col-md-4">
-					<form class="form-inline" id="select-faculty" action="/shop-choose" method="get">
-						<h2>I also wanna SHOP at</h2>
-						<div class="form-group">
-							<div class="col-sm-4">
-								<select class="form-control" name="shop-select">
-									<option value="everywhere">EVERYWHERE</option>
-									<option value="arts and social sciences">Arts and Social Sciences</option>
-									<option value="business">Business</option>
-									<option value="computing">Computing</option>
-									<option value="design and environment">Design and Environment</option>
-									<option value="engineering">Engineering</option>
-									<option value="music">Music</option>
-									<option value="science">Science</option>
-									<option value="utown">Utown</option>
-								</select>
-				
-							</div>
-						</div>
-						<button class="btn btn-danger" id="toggle" type="submit">GO!</button>
-					</form>
-
-				</div>
-				
 			</div>
-			{%if locations|length > 0 %}
+			{% if locations|length > 0 %}
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
 				<div class="col-md-7">
 					<h4>{{ location.area }}</h4>
+					<h4>{{ location.shopname }}</h4>
+					{%if location.shopType=="bazaar"%}
+						<h4>From {{location.dateStart}} to {{location.dateEnd}}</h4>
+						<h4>{{location.time}} daily</h4>
+					{% endif %}
+					{%if location.shopType=="bazaar"%}
+					<div class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
+					{%elif location.shopType=="food outlet"%}
+					<div class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
+					{%else%}
+					<div class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
+					{%endif%}
 				</div>
 				<div class="col-md-5">
-					<img src="http://placehold.it/460x300"/>
+					<img class="img img-responsive thumbnail-shop" src="{{location.image1}}"/>
 				</div>
 				<form action="/submit-shop-area" method="get">
 					<input name="shop-area" type="hidden" value="{{location.area}}">
@@ -118,7 +198,32 @@
 				$('.row-valid').click(function() {
 					$(this).children('form').submit();
 				});
+				$('.sidebar').hover(function() {
+					$(this).stop().animate({right: '-20px'});
+					$(this).find('.pull').stop().fadeOut();
+					$(this).find('.select-faculty').stop().fadeIn();
+				}, function() {
+					$(this).stop().animate({right: '-260px'});
+					$(this).find('.pull').stop().fadeIn();
+					$(this).find('.select-faculty').stop().fadeOut();
+				});
+				$('#select-sort').change(function() {
+					if ($(this).val() == 'date') {
+						$('#note1').show();
+					}
+					else {
+						$('#note1').hide();
+					}
+					if ($(this).val() == 'rating') {
+						$('#note2').show();
+					}
+					else {
+						$('#note2').hide();
+					}
+				});
+
 			});
+			
 		</script>
   </body>
 

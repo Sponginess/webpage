@@ -40,8 +40,173 @@ li a {
 	padding-bottom: 20px;
 }
 
-.contenthover { padding:20px 20px 10px 20px;}
-.contenthover, .contenthover h3, contenthover a { color:white; text-align:center; padding-top:40px;}
-.contenthover h3, .contenthover p { margin:0 0 10px 0; line-height:1.4em; padding:0;}
-.contenthover a.mybutton { display:block; float:left; padding:5px 10px; background:#3c9632; color:#fff; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
-.contenthover a.mybutton:hover { background:#34742d }
+#title {
+	padding-bottom: 40px;
+}
+
+#desc {
+	font-size: 20px;
+}
+
+.icon-label {
+	text-align: center;
+	font-size: 30px;
+}
+
+.icons {
+	border: 2px white solid;
+}
+
+.amenities, .shop-type {
+	padding-left:20px;
+}
+
+
+
+.form-display {
+	display: inline-block;
+}
+#sidebar1 {
+	width: 300px;
+	height: 340px;
+	background-color: white;
+	position: fixed;
+	right: -260px;
+	z-index: 100;
+	border-radius: 5px;
+	border: 2px grey solid;
+	top: 100px;
+
+}
+
+#pull1 {
+	writing-mode: tb-rl;
+	-webkit-transform: rotate(270deg);
+    -webkit-transform-origin: top left;   
+    -moz-transform: rotate(270deg);
+    -moz-transform-origin: top left; 
+    -o-transform: rotate(270deg);
+    -o-transform-origin: top left; 
+    -ms-transform: rotate(270deg);
+    -ms-transform-origin: top left; 
+	position: absolute;
+	font-size: 20px;
+	display: block;
+	top: 85px;
+	left: 5px;
+}
+
+#sidebar2 {
+	width: 300px;
+	height: 340px;
+	background-color: white;
+	position: fixed;
+	right: -260px;
+	z-index: 100;
+	border-radius: 5px;
+	border: 2px grey solid;
+	bottom: 50px;
+
+}
+
+#pull2 {
+	writing-mode: tb-rl;
+	-webkit-transform: rotate(270deg);
+    -webkit-transform-origin: top left;   
+    -moz-transform: rotate(270deg);
+    -moz-transform-origin: top left; 
+    -o-transform: rotate(270deg);
+    -o-transform-origin: top left; 
+    -ms-transform: rotate(270deg);
+    -ms-transform-origin: top left; 
+	position: absolute;
+	font-size: 20px;
+	display: block;
+	top: 240px;
+	left: 5px;
+}
+
+	
+.select-faculty {
+	padding-left: 40px;
+	padding-top: 10px;
+}
+
+#select-pull {
+	width: 240px;
+}
+
+#select-sort{
+	width: 240px;
+}
+
+.add{
+	width: 400px;
+	border: 2px grey solid;
+	float: left;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 10px;
+}
+
+.poster {
+	border: 2px grey solid;
+}
+
+.thumbnail-shop{
+	border: 1px lightgrey solid;
+}
+
+.note{
+	font-size: 10px;
+	color: red;
+}
+
+
+.amenities-icon, .shop-icon, .poop-icon {
+	width: 70px;
+	height: 70px;
+	border-radius: 15px;
+	display: inline-block;
+}
+
+.chairs-icon{
+	background-color: #fe8c8c;
+}
+.sofas-icon{
+	background-color: #fecf75;
+}
+.tables-icon{
+	background-color: #fee87e;
+}
+.sockets-icon{
+	background-color: #bced91;
+}
+.aircon-icon{
+	background-color: #7dd8fd;
+}
+
+.shop-icon, .poop-icon{
+	text-align: center;
+}
+
+.shop-fa, .poop-fa{
+	color: white;
+	top: 10px;
+	font-size: 50px;
+	position: relative;
+}
+
+.bazaar-icon{
+	background-color: #be9eff;
+}
+.food-icon{
+	background-color: gold;
+}
+.bookshop-icon{
+	background-color: #9ed3ff;
+}
+
+.poop-icon{
+	background-color: #57bff7
+}

@@ -67,3 +67,114 @@ indexes:
   - name: study
   - name: date
     direction: desc
+
+- kind: PoopLocation
+  properties:
+  - name: date
+    direction: desc
+  - name: area
+
+- kind: PoopLocation
+  properties:
+  - name: date
+    direction: desc
+  - name: area
+    direction: desc
+
+- kind: PoopLocation
+  properties:
+  - name: faculty
+  - name: area
+
+- kind: PoopLocation
+  properties:
+  - name: faculty
+  - name: area
+    direction: desc
+
+- kind: PoopLocation
+  properties:
+  - name: faculty
+  - name: cleanliness
+
+- kind: PoopLocation
+  properties:
+  - name: faculty
+  - name: cleanliness
+    direction: desc
+
+- kind: PoopLocation
+  properties:
+  - name: faculty
+  - name: date
+    direction: desc
+
+- kind: ShopLocation
+  properties:
+  - name: faculty
+  - name: area
+
+- kind: ShopLocation
+  properties:
+  - name: faculty
+  - name: area
+    direction: desc
+
+- kind: ShopLocation
+  properties:
+  - name: faculty
+  - name: date
+    direction: desc
+
+- kind: ShopLocation
+  properties:
+  - name: faculty
+  - name: rating
+    direction: desc
+
+- kind: StudyLocation
+  properties:
+  - name: aircon
+  - name: sockets
+  - name: sofas
+  - name: tables
+  - name: date
+    direction: desc
+
+- kind: StudyLocation
+  properties:
+  - name: area
+  - name: rating
+
+- kind: StudyLocation
+  properties:
+  - name: area
+  - name: rating
+    direction: desc
+
+- kind: StudyLocation
+  properties:
+  - name: faculty
+  - name: area
+
+- kind: StudyLocation
+  properties:
+  - name: faculty
+  - name: area
+    direction: desc
+
+- kind: StudyLocation
+  properties:
+  - name: faculty
+  - name: date
+    direction: desc
+
+- kind: StudyLocation
+  properties:
+  - name: faculty
+  - name: rating
+
+- kind: StudyLocation
+  properties:
+  - name: faculty
+  - name: total

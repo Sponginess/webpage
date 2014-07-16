@@ -29,9 +29,8 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
-						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
 						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
@@ -78,7 +77,7 @@
 					<h4>{{ location.area }}</h4>
 				</div>
 				<div class="col-md-5">
-					<img src="http://placehold.it/460x300"/>
+					<img src="{{location.image1}}"/>
 				</div>
 				<form action="/submit-sleep-area" method="get">
 					<input name="sleep-area" type="hidden" value="{{location.area}}">

@@ -29,9 +29,8 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/sleep" class="nav-options"><i class="fa fa-clock-o"></i> Sleep</a></li>
-						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
 						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
@@ -44,25 +43,23 @@
 		<div class="container">
 			<div class="row row-content">
 				<h3>Click on an icon below to get started!</h3>
-				<div class="col-sm-6 col-md-3 content">
-					<a href="/sleep">
-						<img class="img-responsive icons" src="img/sleepsmall.png"/>
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-3 content">
-					<a href="/shop">
-						<img class="img-responsive icons" src="img/shopsmall.png"/>
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-3 content">
+				<div class="col-sm-6 col-md-4 content text-center">
 					<a href="/study">
 						<img class="img-responsive icons" src="img/studysmall.png"/>
 					</a>
+					<p class="icon-label">Study</p>
 				</div>
-				<div class="col-sm-6 col-md-3 content">
+				<div class="col-sm-6 col-md-4 content text-center">
+					<a href="/shop">
+						<img class="img-responsive icons" src="img/shopsmall.png"/>
+					</a>
+					<p class="icon-label">Shop</p>
+				</div>
+				<div class="col-sm-6 col-md-4 content text-center">
 					<a href="/poop">
 						<img class="img-responsive icons" src="img/poopsmall.png"/>
 					</a>
+					<p class="icon-label">Poop</p>
 				</div>
 			</div>
 		</div>
@@ -76,6 +73,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<p><a href ="/add">Click this Link to add stuff to database</a><p>
+					<p><a href="/more-info">About this website</a></p>
 					<br>
 					<p>Created by Xing Yi and Josephine | Team HopelesslyLost</p>
 					
@@ -88,10 +86,19 @@
 		<script src="js/script.js"></script>
 		<script>
 			$(document).ready(function() {
+				
 				$('.icons').hover(function() {
-					$(this).css("border","2px solid gold")
+					var icon = $(this).attr('src')
+					var front = icon.substring(0, icon.length - 9)
+					var back = icon.substring(icon.length - 9)
+					$(this).css("border","2px gold solid");
+					$(this).attr("src",front + "2" + back);
 					}, function() {
-					$(this).css("border","none")
+					var icon = $(this).attr('src')
+					var front = icon.substring(0, icon.length - 10)
+					var back = icon.substring(icon.length - 9)
+					$(this).css("border","2px white solid");
+					$(this).attr("src",front + back);
 				});
 
 			});
