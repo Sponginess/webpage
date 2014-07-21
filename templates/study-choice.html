@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a href="/" class="navbar-brand">
-						<img id="logo" src="img/logosmall.png"/>
+						<img id="logo" src="img/logo4small.png"/>
 					</a>
 				</div>
 				<div class="navbar-collapse collapse">
@@ -90,6 +90,8 @@
 						<option value="everywhere">EVERYWHERE</option>
 						<option value="arts and social sciences">Arts and Social Sciences</option>
 						<option value="business">Business</option>
+						<option value="central library">Central Library</option>
+						<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 						<option value="computing">Computing</option>
 						<option value="design and environment">Design and Environment</option>
 						<option value="engineering">Engineering</option>
@@ -143,32 +145,33 @@
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
 				<div class="col-md-7">
+					<h4>{{ location.buildingfloor }}</h4>
 					<h4>{{ location.area }}</h4>
 					<h4>{{ location.rating }} out of 10</h4>
 					<h4>{{ location.total }} amenities in total</h4>
 					<h4>
 					{%if location.chairs=="on"%}
-					<div class="chairs-icon amenities-icon">
+					<div title="This location has chairs" class="chairs-icon amenities-icon">
 						<img class="img-responsive" src="img/chair.png"/>
 					</div>
 					{%endif%}
 					{%if location.sofas=="on"%}
-					<div class="sofas-icon amenities-icon">
+					<div title="This location has sofas" class="sofas-icon amenities-icon">
 						<img class="img-responsive" src="img/sofa.png"/>
 					</div>
 					{%endif%}
 					{%if location.tables=="on"%}
-					<div class="tables-icon amenities-icon">
+					<div title="This location has tables" class="tables-icon amenities-icon">
 						<img class="img-responsive" src="img/table.png"/>
 					</div>
 					{%endif%}
 					{%if location.sockets=="on"%}
-					<div class="sockets-icon amenities-icon">
+					<div title="This location has sockets" class="sockets-icon amenities-icon">
 						<img class="img-responsive" src="img/socket.png"/>
 					</div>
 					{%endif%}
 					{%if location.aircon=="on"%}
-					<div class="aircon-icon amenities-icon">
+					<div title="This location has air-conditioning" class="aircon-icon amenities-icon">
 						<img class="img-responsive" src="img/aircon.png"/>
 					</div>
 					{%endif%}

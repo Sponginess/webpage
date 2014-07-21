@@ -26,14 +26,18 @@
 				<select name="select1">
 					<option value="arts and social sciences">Arts and Social Sciences</option>
 					<option value="business">Business</option>
+					<option value="central library">Central Library</option>
+					<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 					<option value="computing">Computing</option>
 					<option value="design and environment">Design and Environment</option>
 					<option value="engineering">Engineering</option>
 					<option value="music">Music</option>
 					<option value="science">Science</option>
 					<option value="utown">Utown</option>
-				</select> Faculty Select<br>
-				<input name="input2" type="text" placeholder="Area"> Area Input<br><br>
+				</select> Faculty<br>
+				<input name="buidingfloor" type="text" placeholder="Building/Floor"> Buiding/Floor<br>
+				<input name="input2" type="text" placeholder="Area"> Area Input<br>
+				
 				
 				<h2>Check the boxes which have areas nearby to this study area</h2>
 				<input name="input3" type="checkbox" placeholder="Shop"> Shop<br>
@@ -54,6 +58,9 @@
 				<h2>Enter overall rating</h2>
 				<input name="input13" type="text" placeholder="Rating"> Rating<br>
 				
+				<h2>Enter Directions</h2>
+				<input name="directions" type="text" placeholder="Directions"> Directions<br>
+				
 				<h2>Enter image urls</h2>
 				<input name="input14" type="text" placeholder="Image URL"> Image 1<br>
 				<input name="input15" type="text" placeholder="Image URL"> Image 2<br>
@@ -63,23 +70,32 @@
 				
 				<input type="submit" value="Submit">
 			</form>
+			
+			<h1>Add from File</h1>
+			<a href="/">Click this Link to return to SecondHome</a>
+			<form action="/add-file-study" method="post">
+				<input type="submit" value="Submit">
+			</form>
 		</div>
 		<div class="add">
 			<h1>Shop</h1>
 			<a href="/">Click this Link to return to SecondHome</a>
 			<form action="/edit-shop" method="post">
-				<h2>Select one of the faculties and <br>enter the name of the area</h2>
+				<h2>Select one of the faculties</h2>
 				<select name="select1">
 					<option value="arts and social sciences">Arts and Social Sciences</option>
 					<option value="business">Business</option>
+					<option value="central library">Central Library</option>
+					<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 					<option value="computing">Computing</option>
 					<option value="design and environment">Design and Environment</option>
 					<option value="engineering">Engineering</option>
 					<option value="music">Music</option>
 					<option value="science">Science</option>
 					<option value="utown">Utown</option>
-				</select> Faculty Select<br>
-				<input name="input2" type="text" placeholder="Area"> Area Input<br><br>
+				</select> Faculty<br>
+				<input name="buidingfloor" type="text" placeholder="Building/Floor"> Buiding/Floor<br>
+				
 				
 				<h2>Enter the name of the shop/bazaar</h2>
 				<input name="input3" type="text" placeholder="Shop/Bazaar Name"> Shop/Bazaar Name
@@ -101,12 +117,20 @@
 					<input name="time" type="text"> Timing<br>
 				</div>
 				
-				<input value="0" id="shop-rating" hidden name="rating" type="text" placeholder="Enter Rating"> <br>
+				<input value="0" id="shop-rating" hidden name="rating" type="text" placeholder="Enter Rating"><br>
+				
+				<h2>Enter Directions</h2>
+				<input name="directions" type="text" placeholder="Directions"> Directions<br>
 				
 				<h2>Enter image urls, one an image of the shop, the other a poster if its a bazaar</h2>
 				<input name="input8" type="text" placeholder="Image URL"> Image 1<br>
 				<input name="input9" type="text" placeholder="Image URL"> Image 2<br>
 				
+				<input type="submit" value="Submit">
+			</form>
+			<h1>Add from File</h1>
+			<a href="/">Click this Link to return to SecondHome</a>
+			<form action="/add-file-shop" method="post">
 				<input type="submit" value="Submit">
 			</form>
 		</div>	
@@ -118,14 +142,17 @@
 				<select name="select1">
 					<option value="arts and social sciences">Arts and Social Sciences</option>
 					<option value="business">Business</option>
+					<option value="central library">Central Library</option>
+					<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 					<option value="computing">Computing</option>
 					<option value="design and environment">Design and Environment</option>
 					<option value="engineering">Engineering</option>
 					<option value="music">Music</option>
 					<option value="science">Science</option>
 					<option value="utown">Utown</option>
-				</select> Faculty Select<br>
-				<input name="input2" type="text" placeholder="Area"> Area Input<br><br>
+				</select> Faculty<br>
+				<input name="buidingfloor" type="text" placeholder="Building/Floor"> Buiding/Floor<br>
+				<input name="input2" type="text" placeholder="Area"> Area Input<br>
 				
 				<h2>Check the boxes which have areas nearby to this pooping area</h2>
 				<input name="input3" type="checkbox" placeholder="Study"> Study<br>
@@ -141,6 +168,9 @@
 				<input name="hasHandicapped" type="checkbox" placeholder="hasHandicapped"> Handicapped toilets available<br>
 				<input name="cleanlinessHandicapped" type="text" placeholder="Cleanliness Handicapped"> Cleanliness Handicapped
 				
+				<h2>Enter Directions</h2>
+				<input name="directions" type="text" placeholder="Directions"> Directions<br>
+				
 				<h2>Enter image urls, first gents, second ladies</h2>
 				<input name="input7" type="text" placeholder="Image URL"> Image 1<br>
 				<input name="input8" type="text" placeholder="Image URL"> Image 2<br>
@@ -148,6 +178,7 @@
 				<input type="submit" value="Submit">
 			</form>
 		</div>
+			
 		<script src="js/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {

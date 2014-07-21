@@ -149,7 +149,7 @@ class ShopChoose(webapp2.RequestHandler):
 		if shop_choice!="everywhere":
 			shop_query = ShopLocation.query(ShopLocation.faculty==shop_choice).order(ShopLocation.area)
 		else:
-			shop_query = ShopLocation.query().order(ShopLocation.area)
+			shop_query = ShopLocation.query().order(ShopLocation.buildingfloor)
 		shop_locations = shop_query.fetch()
 		filtered_locations = []
 		temp = []
@@ -391,6 +391,7 @@ class AddStudy(webapp2.RequestHandler):
 		content = StudyLocation()
 		content.faculty = self.request.get('select1')
 		content.area = self.request.get('input2')
+		content.buildingfloor = self.request.get('buidingfloor')
 		
 		content.shop = self.request.get('input3')
 		content.poop = self.request.get('input4')
@@ -412,7 +413,7 @@ class AddStudy(webapp2.RequestHandler):
 		content.image3 = self.request.get('input16')
 
 		content.total = content.numSeats + content.numTables + content.numSockets
-		
+		content.directions = self.request.get('directions')
 		content.put();
 		self.redirect('/add')
 
@@ -422,7 +423,7 @@ class AddShop(webapp2.RequestHandler):
 		content = ShopLocation()
 		
 		content.faculty = self.request.get('select1')
-		content.area = self.request.get('input2')
+		content.buildingfloor = self.request.get('buidingfloor')
 		
 		content.shopname = self.request.get('input3')
 		
@@ -444,7 +445,7 @@ class AddShop(webapp2.RequestHandler):
 			content.dateEnd = datetime.datetime.strptime(self.request.get('dateEnd'), "%Y-%m-%d").date()
 			
 		content.time = self.request.get('time')
-		
+		content.directions = self.request.get('directions')
 		content.put()
 		
 		self.redirect('/add')
@@ -455,6 +456,7 @@ class AddPoop(webapp2.RequestHandler):
 		content = PoopLocation()
 		content.faculty = self.request.get('select1')
 		content.area = self.request.get('input2')
+		content.buildingfloor = self.request.get('buidingfloor')
 		
 		content.study = self.request.get('input3')
 		content.shop = self.request.get('input4')
@@ -473,7 +475,8 @@ class AddPoop(webapp2.RequestHandler):
 			content.cleanliness = (content.cleanlinessGents + content.cleanlinessLadies + content.cleanlinessHandicapped)/3
 		else:
 			content.cleanliness = (content.cleanlinessGents + content.cleanlinessLadies)/2
-			
+		
+		content.directions = self.request.get('directions')
 		content.put();
 		self.redirect('/add')
 class Information(webapp2.RequestHandler):
@@ -485,8 +488,8 @@ class Information(webapp2.RequestHandler):
 
 class ShopArea(webapp2.RequestHandler):
 	def get(self):
-		area_input = self.request.get('shop-area')
-		area_info = ShopLocation.query(ShopLocation.area==area_input)
+		area_input = self.request.get('shop-name')
+		area_info = ShopLocation.query(ShopLocation.shopName==area_input)
 		area = area_info.fetch().pop()
 		template = jinja_environment.get_template('area-shop.html')
 		template_values = {
@@ -543,6 +546,7 @@ class StudyLocation(ndb.Model):
 	#Location, string
 	faculty = ndb.StringProperty()
 	area = ndb.StringProperty()
+	buildingfloor = ndb.StringProperty()
 	
 	#Nearby facilities, boolean
 	shop = ndb.StringProperty()
@@ -569,14 +573,15 @@ class StudyLocation(ndb.Model):
 	image2 = ndb.StringProperty()
 	image3 = ndb.StringProperty()
 	
+	directions = ndb.StringProperty()
 class ShopLocation(ndb.Model):
 	date = ndb.DateTimeProperty(auto_now_add=True)
 	
 	#Location, string
 	faculty = ndb.StringProperty()
-	area = ndb.StringProperty()
+	buildingfloor = ndb.StringProperty()
 	
-	shopname = ndb.StringProperty()
+	shopName = ndb.StringProperty()
 	
 	#Nearby Amenities, boolean
 	study = ndb.StringProperty()
@@ -599,6 +604,8 @@ class ShopLocation(ndb.Model):
 	dateStart = ndb.DateProperty()
 	dateEnd = ndb.DateProperty()
 	time = ndb.StringProperty()
+	
+	directions = ndb.StringProperty()
 
 class PoopLocation(ndb.Model):
 	date = ndb.DateTimeProperty(auto_now_add=True)
@@ -606,6 +613,7 @@ class PoopLocation(ndb.Model):
 	#Location, string	
 	faculty = ndb.StringProperty()
 	area = ndb.StringProperty()
+	buildingfloor = ndb.StringProperty()
 	
 	#Nearby Amenities, boolean
 	study = ndb.StringProperty()
@@ -625,7 +633,7 @@ class PoopLocation(ndb.Model):
 	ladies = ndb.StringProperty()
 	gents = ndb.StringProperty()
 	
-	
+	directions = ndb.StringProperty()
 """
 class BazaarInfo(ndb.Model):
 	bazaarName = ndb.StringProperty()
@@ -638,6 +646,84 @@ class ContactForm(ndb.Model):
 	email = ndb.StringProperty()
 	message = ndb.StringProperty()
 
+class AddFileStudy(webapp2.RequestHandler):
+	def post(self):
+		
+		f = open("study.txt", "r")
+		line = f.readline()
+		while True:
+			if line == "":
+				break
+
+			data = [element.strip() for element in line.split('|')]
+			content = StudyLocation()
+			content.faculty = data[0]
+			content.buildingfloor = data[1]
+			content.area = data[2]
+			
+			content.shop = data[3]
+			content.poop = data[4]
+				
+			content.chairs = data[5]
+			content.sofas = data[6]
+			content.tables = data[7]
+			content.sockets = data[8]
+			content.aircon = data[9]
+			
+			content.numSeats = int(data[10])
+			content.numTables = int(data[11])
+			content.numSockets = int(data[12])
+			
+			content.rating = int(data[13])
+			
+			content.directions = data[14]
+			content.image1 = data[15]
+			content.image2 = data[16]
+			content.image3 = data[17]
+
+			content.total = content.numSeats + content.numTables + content.numSockets
+			
+			content.put();
+			line = f.readline()
+		
+		f.close()
+		self.redirect('/add')
+				
+class AddFileShop(webapp2.RequestHandler):
+	def post(self):
+		
+		f = open("shop.txt", "r")
+		line = f.readline()
+		while True:
+			if line == "":
+				break
+
+			data = [element.strip() for element in line.split('|')]
+			content = ShopLocation()
+			content.faculty = data[0]
+			content.buildingfloor = data[1]
+			content.shopName = data[2]
+			
+			content.study = data[3]
+			content.poop = data[4]
+			
+			content.shopType = data[5]
+			
+			content.rating = int(data[6])
+			
+			content.directions = data[7]
+			
+			content.shopDesc = data[8]
+			
+			content.image1 = data[9]
+			content.image2 = data[10]
+			
+			content.put();
+			line = f.readline()
+		
+		f.close()
+		self.redirect('/add')		
+		
 app = webapp2.WSGIApplication([('/', MainPage),
 								('/contact', Contact),
 								('/shop', Shop),
@@ -649,7 +735,7 @@ app = webapp2.WSGIApplication([('/', MainPage),
 								('/edit-poop', AddPoop),
 								('/shop-choose', ShopChoose),
 								('/shop-sort', ShopSort),
-								('/submit-shop-area', ShopArea),
+								('/submit-shop-name', ShopArea),
 								('/study-choose', StudyChoose),
 								('/study-sort', StudySort),
 								('/submit-study-area', StudyArea),
@@ -659,5 +745,7 @@ app = webapp2.WSGIApplication([('/', MainPage),
 								('/contact-submit', Contact),
 								('/thanks', Thanks),
 								('/error', Error),
-								('/more-info', Information)],
+								('/more-info', Information),
+								('/add-file-study', AddFileStudy),
+								('/add-file-shop', AddFileShop)],
 								debug=True)

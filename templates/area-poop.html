@@ -11,6 +11,8 @@
 				<option value="everywhere">EVERYWHERE</option>
 				<option value="arts and social sciences">Arts and Social Sciences</option>
 				<option value="business">Business</option>
+				<option value="central library">Central Library</option>
+				<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 				<option value="computing">Computing</option>
 				<option value="design and environment">Design and Environment</option>
 				<option value="engineering">Engineering</option>
@@ -32,14 +34,16 @@
 </div>
 {% endblock %}
 {% block content %}
-<div class="col-md-3">
-	<h3 class="text-center">LADIES</h3>
+<h2 class="location">{{Area.area}}</h2>
+<div class="row">
+	<div class="col-md-3">
+		<h3 class="text-center">LADIES</h3>
+	</div>
+	<div class="col-md-6">
+		<img class="img img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/c/c7/Bathroom-gender-sign.png"/>
+	</div>
+	<div class="col-md-3">
+		<h3 class="text-center">GENTS</h3>
+	</div>
 </div>
-<div class="col-md-6">
-	<img class="img img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/c/c7/Bathroom-gender-sign.png"/>
-</div>
-<div class="col-md-3">
-	<h3 class="text-center">GENTS</h3>
-</div>
-
 {% endblock %}

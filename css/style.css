@@ -1,8 +1,8 @@
 i {
-	font-size:20px;
+	font-size:15px;
 }
 li a {
-	font-size:20px;
+	font-size:15px;
 }
 
 
@@ -209,4 +209,12 @@ li a {
 
 .poop-icon{
 	background-color: #57bff7
+}
+
+#logo {
+	padding-top:5px;
+}
+
+.navbar-nav{
+	float:right;
 }

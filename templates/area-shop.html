@@ -11,6 +11,8 @@
 				<option value="everywhere">EVERYWHERE</option>
 				<option value="arts and social sciences">Arts and Social Sciences</option>
 				<option value="business">Business</option>
+				<option value="central library">Central Library</option>
+				<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 				<option value="computing">Computing</option>
 				<option value="design and environment">Design and Environment</option>
 				<option value="engineering">Engineering</option>
@@ -43,18 +45,22 @@
 </div>
 {% endblock %}
 {% block content %}
-{% if Area.shopType=="bazaar" %}
-<div class="col-md-12">
-	<img class="img img-responsive poster" src="{{Area.image2}}"/>
-</div>
+<h2 class="location">{{Area.buildingfloor}}</h2>
+<div class="row">
+	{% if Area.shopType=="bazaar" %}
+	<div class="col-md-12">
+		<img class="img img-responsive poster" src="{{Area.image2}}"/>
+	</div>
 
-{% else %}
-<div class="col-md-7">
-	<h3>{{Area.shopname}}</h3>
-	<p>{{Area.shopDesc}}<p>
+	{% else %}
+	<div class="col-md-7">
+		<h3>{{Area.shopName}}</h3>
+		<p>{{Area.shopDesc}}<p>
+		<p>To get here: {{Area.directions}}</p>
+	</div>
+	<div class="col-md-5">
+		<img class="img img-responsive" src="{{Area.image1}}"/>
+	</div>
+	{% endif %}
 </div>
-<div class="col-md-5">
-	<img class="img img-responsive" src="{{Area.image1}}"/>
-</div>
-{% endif %}
 {% endblock %}

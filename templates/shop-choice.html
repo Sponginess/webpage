@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a href="/" class="navbar-brand">
-						<img id="logo" src="img/logosmall.png"/>
+						<img id="logo" src="img/logo4small.png"/>
 					</a>
 				</div>
 				<div class="navbar-collapse collapse">
@@ -99,6 +99,8 @@
 						<option value="everywhere">EVERYWHERE</option>
 						<option value="arts and social sciences">Arts and Social Sciences</option>
 						<option value="business">Business</option>
+						<option value="central library">Central Library</option>
+						<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 						<option value="computing">Computing</option>
 						<option value="design and environment">Design and Environment</option>
 						<option value="engineering">Engineering</option>
@@ -143,25 +145,26 @@
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
 				<div class="col-md-7">
-					<h4>{{ location.area }}</h4>
-					<h4>{{ location.shopname }}</h4>
+					<h4>{{ location.buildingfloor }}</h4>
+					<h4>{{ location.shopName }}</h4>
 					{%if location.shopType=="bazaar"%}
 						<h4>From {{location.dateStart}} to {{location.dateEnd}}</h4>
 						<h4>{{location.time}} daily</h4>
 					{% endif %}
 					{%if location.shopType=="bazaar"%}
-					<div class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
+					<div title="Bazaar" class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
 					{%elif location.shopType=="food outlet"%}
-					<div class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
+					<h4>{{location.rating}} out of 10</h4>
+					<div title="Food Outlet"class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
 					{%else%}
-					<div class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
+					<div title="BookShop" class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
 					{%endif%}
 				</div>
 				<div class="col-md-5">
 					<img class="img img-responsive thumbnail-shop" src="{{location.image1}}"/>
 				</div>
-				<form action="/submit-shop-area" method="get">
-					<input name="shop-area" type="hidden" value="{{location.area}}">
+				<form action="/submit-shop-name" method="get">
+					<input name="shop-name" type="hidden" value="{{location.shopName}}">
 				</form>
 			</div>
 			{% endfor %}
