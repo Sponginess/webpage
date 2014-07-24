@@ -1,0 +1,10 @@
+arts and social sciences|	AS2 Level 2|	Next to Dily's Creations|	on|	on|	7|	7|	N|	0|	Take a left turn at NUS Press and walk to the end of the corridor passing by Dily's Creations and turn right.|
+engineering|	E3 Level 4|	Next to Subway|	on|	on|	5|	5|	N|	0|	Walk towards E3 down the corridor towards Subway.|
+business|	BIZ 2 Level 3|	Outside LT18|	on|	on|	6|	6|	N|	0|	Take a left turn into COM2 from the COM2 bus stop and cut across the cafeteria and a flight of stair down.|
+computing|	COM1 Level 1|	From CLB|	N|	N|	5|	5|	N|	0|	Walk towards COM1 from CLB.|
+computing|	COM1 Level 1|	Lobby|	on|	N|	9|	9|	on|	9|	Take a left turn into COM1 from the COM2 bus stop and walk through the glass doors to the lobby.|
+computing|	COM1 Level 2|	OA|	on|	N|	8|	8|	N|	0|	Take a left turn into COM1 from the COM2 bus stop and walk through the glass doors through the lobby and take the stairs on the left to the second floor. Walk through the glass doors and keep left. Exit using the glass doors on the left. The restrooms are on your right.|
+computing|	COM1 Level 2|	SA|	on|	N|	7|	7|	on|	7|	Take a left turn into COM1 from the COM2 bus stop and walk through the glass doors through the lobby and take the stairs on the left to the second floor. Walk down the corridor avoiding the glass door towards the small grey door at the end of the corridor.|
+design and environment|	SDE1 Level 2|	Next to Outdoor Area|	on|	N|	6|	6|	on|	6|	Take the main stairs and turn left.|
+medicine|	MD4|	Department of Microbiology Level 1|	on|	on|	9|	9|	on|	9|	Take a left turn from the LT28 bus stop and walk through the science cafeteria, up the stairs towards Subway and make a left turn behind subway and enter the corridor. The gents are to the right. To find the ladies, walk to the end of the corridor and make a right turn.|
+music|	YSTCM Basement|	Carpark|	N|	N|	8|	8|	on|	8|	Take stairs down to the carpark and walk to the end of the corridor.|

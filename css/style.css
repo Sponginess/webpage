@@ -1,5 +1,6 @@
 i {
 	font-size:15px;
+	color: orange;
 }
 li a {
 	font-size:15px;
@@ -80,7 +81,7 @@ li a {
 }
 
 #pull1 {
-	writing-mode: tb-rl;
+
 	-webkit-transform: rotate(270deg);
     -webkit-transform-origin: top left;   
     -moz-transform: rotate(270deg);
@@ -110,7 +111,7 @@ li a {
 }
 
 #pull2 {
-	writing-mode: tb-rl;
+
 	-webkit-transform: rotate(270deg);
     -webkit-transform-origin: top left;   
     -moz-transform: rotate(270deg);
@@ -164,9 +165,9 @@ li a {
 
 
 .amenities-icon, .shop-icon, .poop-icon {
-	width: 70px;
-	height: 70px;
-	border-radius: 15px;
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
 	display: inline-block;
 }
 
@@ -192,8 +193,8 @@ li a {
 
 .shop-fa, .poop-fa{
 	color: white;
-	top: 10px;
-	font-size: 50px;
+	top: 7px;
+	font-size: 35px;
 	position: relative;
 }
 
@@ -217,4 +218,24 @@ li a {
 
 .navbar-nav{
 	float:right;
+}
+
+.sidebar:hover{ 
+    outline: none;
+    border-color: #E02222;
+    box-shadow: 0 0 10px #E02222;
+}
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: grey; 
+	border-width: 0 5px 5px;
+}
+
+.tooltip-inner{
+	background-color: white;
+	border: 2px solid grey;
+	color: grey;
+}
+.navbar{
+	border-top: 2px dashed grey;
+	border-bottom: 2px dashed grey;
 }

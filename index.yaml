@@ -132,6 +132,11 @@ indexes:
   - name: rating
     direction: desc
 
+- kind: ShopLocation
+  properties:
+  - name: faculty
+  - name: shopName
+
 - kind: StudyLocation
   properties:
   - name: aircon

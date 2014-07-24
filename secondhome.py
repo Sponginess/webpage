@@ -147,7 +147,7 @@ class ShopChoose(webapp2.RequestHandler):
 			books="on"
 		template = jinja_environment.get_template('shop-choice.html')
 		if shop_choice!="everywhere":
-			shop_query = ShopLocation.query(ShopLocation.faculty==shop_choice).order(ShopLocation.area)
+			shop_query = ShopLocation.query(ShopLocation.faculty==shop_choice).order(ShopLocation.shopName)
 		else:
 			shop_query = ShopLocation.query().order(ShopLocation.buildingfloor)
 		shop_locations = shop_query.fetch()
@@ -425,7 +425,7 @@ class AddShop(webapp2.RequestHandler):
 		content.faculty = self.request.get('select1')
 		content.buildingfloor = self.request.get('buidingfloor')
 		
-		content.shopname = self.request.get('input3')
+		content.shopName = self.request.get('input3')
 		
 		content.study = self.request.get('input4')
 		content.poop = self.request.get('input5')
@@ -649,7 +649,7 @@ class ContactForm(ndb.Model):
 class AddFileStudy(webapp2.RequestHandler):
 	def post(self):
 		
-		f = open("study.txt", "r")
+		f = open("study2.txt", "r")
 		line = f.readline()
 		while True:
 			if line == "":
@@ -723,6 +723,43 @@ class AddFileShop(webapp2.RequestHandler):
 		
 		f.close()
 		self.redirect('/add')		
+
+class AddFilePoop(webapp2.RequestHandler):
+	def post(self):
+		
+		f = open("poop.txt", "r")
+		line = f.readline()
+		while True:
+			if line == "":
+				break
+
+			data = [element.strip() for element in line.split('|')]
+			content = PoopLocation()
+			content.faculty = data[0]
+			content.buildingfloor = data[1]
+			content.area = data[2]
+			content.study = data[3]
+			content.poop = data[4]
+			content.cleanlinessGents = int(data[5])
+			content.cleanlinessLadies = int(data[6])
+			
+			content.hasHandicapped = data[7]
+			
+			content.cleanlinessHandicapped = int(data[8])
+			content.directions = data[9]
+			if content.hasHandicapped=="on":
+				content.cleanliness = (content.cleanlinessGents + content.cleanlinessLadies + content.cleanlinessHandicapped)/3
+			else:
+				content.cleanliness = (content.cleanlinessGents + content.cleanlinessLadies)/2
+			"""
+			content.ladies = data[10]
+			content.gents = data[11]
+			"""
+			content.put();
+			line = f.readline()
+		
+		f.close()
+		self.redirect('/add')				
 		
 app = webapp2.WSGIApplication([('/', MainPage),
 								('/contact', Contact),
@@ -747,5 +784,6 @@ app = webapp2.WSGIApplication([('/', MainPage),
 								('/error', Error),
 								('/more-info', Information),
 								('/add-file-study', AddFileStudy),
-								('/add-file-shop', AddFileShop)],
+								('/add-file-shop', AddFileShop),
+								('/add-file-poop', AddFilePoop)],
 								debug=True)

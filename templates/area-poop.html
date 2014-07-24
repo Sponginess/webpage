@@ -12,10 +12,10 @@
 				<option value="arts and social sciences">Arts and Social Sciences</option>
 				<option value="business">Business</option>
 				<option value="central library">Central Library</option>
-				<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 				<option value="computing">Computing</option>
 				<option value="design and environment">Design and Environment</option>
 				<option value="engineering">Engineering</option>
+				<option value="medicine">Medicine</option>
 				<option value="music">Music</option>
 				<option value="science">Science</option>
 				<option value="utown">Utown</option>
@@ -38,12 +38,19 @@
 <div class="row">
 	<div class="col-md-3">
 		<h3 class="text-center">LADIES</h3>
+		<h4 class="text-center">Cleanliness: {{Area.cleanlinessLadies}} out of 10</h4>
 	</div>
 	<div class="col-md-6">
+	{%if Area.hasHandicapped == "on"%}
+		<h3 class="text-center">HANDICAPPED</h3>
+		<h4 class="text-center">Cleanliness: {{Area.cleanlinessHandicapped}} out of 10</h4>
+	{%else%}
 		<img class="img img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/c/c7/Bathroom-gender-sign.png"/>
+	{%endif%}
 	</div>
 	<div class="col-md-3">
 		<h3 class="text-center">GENTS</h3>
+		<h4 class="text-center">Cleanliness: {{Area.cleanlinessLadies}} out of 10</h4>
 	</div>
 </div>
 {% endblock %}

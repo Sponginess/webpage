@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a href="/" class="navbar-brand">
-						<img id="logo" src="img/logo4small.png"/>
+						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
 				<div class="navbar-collapse collapse">
@@ -100,10 +100,10 @@
 						<option value="arts and social sciences">Arts and Social Sciences</option>
 						<option value="business">Business</option>
 						<option value="central library">Central Library</option>
-						<option value="centre for development of teaching and learning">Centre for Development of Teaching and Learning</option>
 						<option value="computing">Computing</option>
 						<option value="design and environment">Design and Environment</option>
 						<option value="engineering">Engineering</option>
+						<option value="medicine">Medicine</option>
 						<option value="music">Music</option>
 						<option value="science">Science</option>
 						<option value="utown">Utown</option>
@@ -152,12 +152,12 @@
 						<h4>{{location.time}} daily</h4>
 					{% endif %}
 					{%if location.shopType=="bazaar"%}
-					<div title="Bazaar" class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
+					<div title="Bazaar" data-toggle="tooltip" data-placement="bottom"  class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
 					{%elif location.shopType=="food outlet"%}
 					<h4>{{location.rating}} out of 10</h4>
-					<div title="Food Outlet"class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
+					<div title="Food Outlet" data-toggle="tooltip" data-placement="bottom"  class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
 					{%else%}
-					<div title="BookShop" class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
+					<div title="Bookshop" data-toggle="tooltip" data-placement="bottom"  class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
 					{%endif%}
 				</div>
 				<div class="col-md-5">
@@ -224,7 +224,7 @@
 						$('#note2').hide();
 					}
 				});
-
+				$('.shop-icon').tooltip();
 			});
 			
 		</script>
