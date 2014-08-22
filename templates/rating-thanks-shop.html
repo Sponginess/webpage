@@ -3,13 +3,11 @@
 
   <head>
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="css/logo-nav.css"/>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
 		<title>SecondHome</title>
   </head>
 
@@ -24,29 +22,36 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">
+					<a href="/index-user" class="navbar-brand">
 						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/index-user" class="nav-options">Login with <i class="fa fa-google"></i></a></li>
+						<li><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
+						<li class="active"><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
+
+						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
+						<li><a href="/contact" class="nav-options active" ><i class="fa fa-envelope"></i> Contact</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		
-		<!--Content
+		<!--Thank you message
 		======================================================-->
 		<div class="container">
-			<div class="row row-content">
+			<div class="row">
 				<div class="col-md-12">
-					<img class="img-responsive logo-main" src="img/Logo5.png"/>
-					<p class="logo-caption text-right">...Find your place!</p>
+					<h4 class="thanks">Thanks for rating! Click <a class="area-page" href="#">here</a> to go back to the Area Info page</h4>
+					<form action="/submit-shop-area" method="get">
+						<input hidden name="shop-buildingfloor" value="{{area}}">
+						<input hidden name="shop-name" value="{{shopname}}">
+					</form>
 				</div>
 			</div>
 		</div>
-
+		
+		
 		
 		
 		<!--Footer
@@ -55,7 +60,7 @@
 		<div class="container footer footer-right">
 			<div class="row">
 				<div class="col-md-12">
-					<br>
+					<br/>
 					<p>Created by Xing Yi and Josephine | Team HopelesslyLost</p>
 					
 				</div>
@@ -65,27 +70,16 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
-		<script>
+		<script src="js/contentHover.js"></script>
+		<script type="text/javascript">
 			$(document).ready(function() {
-				
-				$('.icons').hover(function() {
-					var icon = $(this).attr('src')
-					var front = icon.substring(0, icon.length - 9)
-					var back = icon.substring(icon.length - 9)
-					$(this).css("border","2px orange solid");
-					$(this).attr("src",front + "2" + back);
-					$(this).parent().next().fadeTo(0, 1)
-					$(this).parent().next().children().fadeTo(0, 1)
-					}, function() {
-					var icon = $(this).attr('src')
-					var front = icon.substring(0, icon.length - 10)
-					var back = icon.substring(icon.length - 9)
-					$(this).css("border","2px white solid");
-					$(this).attr("src",front + back);
-					$(this).parent().next().fadeTo(0, 0)
-					$(this).parent().next().children().fadeTo(0, 0)
+				$('#d1, #d2, #d3, #d4').contenthover({
+					overlay_background:'gold',
+					overlay_opacity:1.0
 				});
-
+				$('.area-page').click(function() {
+					$('form').submit();
+				});
 			});
 		</script>
   </body>

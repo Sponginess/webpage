@@ -52,12 +52,74 @@
 		<img class="img img-responsive poster" src="{{Area.image2}}"/>
 	</div>
 
-	{% else %}
-	<div class="col-md-7">
-		<h2 class="location">{{Area.buildingfloor}}</h2>
-		<h3>{{Area.shopName}}</h3>
-		<p>{{Area.shopDesc}}<p>
-		<p>To get here: {{Area.directions}}</p>
+	{% elif Area.shopType=="food outlet" %}
+	<div class="col-md-7 shop-area-content">
+		<h3 class="location-content">{{Area.buildingfloor}} - {{Area.shopName}}<br><br></h3>
+		<form class="location-content" id="submit-rating" action="/rate-shop" method="post">
+			<h3>Rate this location!</h3>
+			<div class="star-rating">
+				<input class="rb0" id="Ans_1" name="rating-input" type="radio" value="0" >                       
+				<input class="rb1" id="Ans_2" name="rating-input" type="radio" value="0.5" >
+				<input class="rb2" id="Ans_3" name="rating-input" type="radio" value="1" >
+				<input class="rb3" id="Ans_4" name="rating-input" type="radio" value="1.5" >    
+				<input class="rb4" id="Ans_5" name="rating-input" type="radio" value="2" >    
+				<input class="rb5" id="Ans_6" name="rating-input" type="radio" value="2.5" >    
+				<input class="rb6" id="Ans_7" name="rating-input" type="radio" value="3" >
+				<input class="rb7" id="Ans_8" name="rating-input" type="radio" value="3.5" >    
+				<input class="rb8" id="Ans_9" name="rating-input" type="radio" value="4" >
+				<input class="rb9" id="Ans_10" name="rating-input" type="radio" value="4.5" >
+				<input class="rb10" id="Ans_11" name="rating-input" type="radio" value="5" >
+				
+				<label for="Ans_1" class="star rb0l" onclick=""></label>
+				<label for="Ans_2" class="star rb1l" onclick=""></label>
+				<label for="Ans_3" class="star rb2l" onclick=""></label>
+				<label for="Ans_4" class="star rb3l" onclick=""></label>
+				<label for="Ans_5" class="star rb4l" onclick=""></label>
+				<label for="Ans_6" class="star rb5l" onclick=""></label>
+				<label for="Ans_7" class="star rb6l" onclick=""></label>
+				<label for="Ans_8" class="star rb7l" onclick=""></label>
+				<label for="Ans_9" class="star rb8l" onclick=""></label>
+				<label for="Ans_10" class="star rb9l" onclick=""></label>
+				<label for="Ans_11" class="star rb10l last" onclick=""></label>
+				
+				<div class="rating"></div>
+				<div class="rating-bg"></div> 
+				<input name="shop-buildingfloor" type="hidden" value="{{Area.buildingfloor}}">
+				<input name="shop-name" type="hidden" value="{{Area.shopName}}">
+				<p>{{Area.rating}} out of 5 stars ({{numraters}} voters)</p>
+			</div>
+			
+			<button class="btn btn-warning" type="submit">Rate it!</button>
+			<br><br>
+		</form>
+		<div class="location-content">
+			<h3>Shop description</h3>
+			<p>{{Area.shopDesc}}<p>
+			<br>
+		</div>
+		<div>
+			<h3>To get here</h3>
+			<p>{{Area.directions}}</p>
+		</div>
+		<br><br>
+	</div>
+	<div class="col-md-5">
+		<img class="img img-responsive" src="{{Area.image2}}"/>
+	</div>
+	{%else%}
+	<div class="col-md-7 shop-area-content">
+
+		<h3 class="location location-content">{{Area.buildingfloor}} - {{Area.shopName}}</h3>
+		<div class="location-content">
+			<h3>Shop description</h3>
+			<p>{{Area.shopDesc}}<p>
+			<br>
+		</div>
+		<div>
+			<h3>To get here</h3>
+			<p>{{Area.directions}}</p>
+		</div>
+		<br>
 	</div>
 	<div class="col-md-5">
 		<img class="img img-responsive" src="{{Area.image2}}"/>

@@ -23,7 +23,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">
+					<a href="/index-user" class="navbar-brand">
 						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
@@ -33,7 +33,7 @@
 						<li class="active"><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
-						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
+						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li><li><a href="{{logout}}" class="nav-options">Logout from {{user_mail}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -144,9 +144,8 @@
 			{% if locations|length > 0 %}
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
-				<div class="col-md-7">
-					<h4>{{ location.buildingfloor }}</h4>
-					<h4>{{ location.shopName }}</h4>
+				<div class="col-md-7">			
+					<h4>{{ location.shopName }}, {{ location.buildingfloor }}</h4>
 					{%if location.shopType=="bazaar"%}
 						<h4>From {{location.dateStart}} to {{location.dateEnd}}</h4>
 						<h4>{{location.time}} daily</h4>
@@ -154,7 +153,7 @@
 					{%if location.shopType=="bazaar"%}
 					<div title="Bazaar" data-toggle="tooltip" data-placement="bottom"  class="shop-icon bazaar-icon"><i class="fa fa-dollar shop-fa"></i></div>
 					{%elif location.shopType=="food outlet"%}
-					<h4>{{location.rating}} out of 10</h4>
+					<h4>{{location.rating}} out of 5 stars</h4>
 					<div title="Food Outlet" data-toggle="tooltip" data-placement="bottom"  class="shop-icon food-icon"><i class="fa fa-cutlery shop-fa"></i></div>
 					{%else%}
 					<div title="Bookshop" data-toggle="tooltip" data-placement="bottom"  class="shop-icon bookshop-icon"><i class="fa fa-book shop-fa"></i></div>
@@ -163,7 +162,8 @@
 				<div class="col-md-5">
 					<img class="img img-responsive thumbnail-shop" src="{{location.image1}}"/>
 				</div>
-				<form action="/submit-shop-name" method="get">
+				<form action="/submit-shop-area" method="get">
+					<input name="shop-buildingfloor" type="hidden" value="{{location.buildingfloor}}">
 					<input name="shop-name" type="hidden" value="{{location.shopName}}">
 				</form>
 			</div>

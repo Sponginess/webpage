@@ -23,7 +23,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">
+					<a href="/index-user" class="navbar-brand">
 						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
@@ -32,7 +32,7 @@
 						<li class="active"><a href="/study" class="nav-options"><i class="fa fa-graduation-cap"></i> Study</a></li>
 						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
-						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
+						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li><li><a href="{{logout}}" class="nav-options">Logout from {{user_mail}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -145,9 +145,9 @@
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
 				<div class="col-md-7">
-					<h4>{{ location.buildingfloor }}</h4>
-					<h4>{{ location.area }}</h4>
-					<h4>{{ location.rating }} out of 10</h4>
+					
+					<h4>{{ location.area }}, {{ location.buildingfloor }}</h4>
+					<h4>{{ location.rating }} out of 5 stars</h4>
 					<h4>{{ location.total }} amenities in total</h4>
 					<h4>
 					{%if location.chairs=="on"%}

@@ -51,11 +51,14 @@ li a {
 
 .icon-label {
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
+	color: white;
+	font-family: Raleway;
 }
 
 .icons {
 	border: 2px white solid;
+	margin: auto;
 }
 
 .amenities, .shop-type {
@@ -222,8 +225,8 @@ li a {
 
 .sidebar:hover{ 
     outline: none;
-    border-color: #E02222;
-    box-shadow: 0 0 10px #E02222;
+    border-color: #fa7000;
+    box-shadow: 0 0 10px #fa7000;
 }
 .tooltip.bottom .tooltip-arrow {
 	border-bottom-color: grey; 
@@ -239,3 +242,50 @@ li a {
 	border-top: 2px dashed grey;
 	border-bottom: 2px dashed grey;
 }
+
+.toilet-sign{
+	border-radius: 20px;
+	width: 200px;
+	height: 200px;
+	background-color: orange;
+	margin: auto;
+
+}
+
+.toilet{
+	color: white;
+	font-size: 150px;
+	position: relative;
+	top: 25px;
+}
+
+.icon-div{
+	position: relative;
+	top:2px;
+	margin:auto;
+	background-color: orange;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+
+.study-area-content, .shop-area-content{
+	border: 2px dashed grey;
+}
+
+.location-content{
+	border-bottom: 2px solid lightgrey;
+}
+
+.logo-main{
+	margin:auto;
+	padding-bottom: 20px;
+}
+
+.logo-caption{
+	font-size:30px;
+	color: orange;
+	font-family: Raleway;
+}
+

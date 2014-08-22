@@ -22,7 +22,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">
+					<a href="/index-user" class="navbar-brand">
 						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
@@ -33,6 +33,7 @@
 
 						<li><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
 						<li class="active"><a href="/contact" class="nav-options active" ><i class="fa fa-envelope"></i> Contact</a></li>
+						<li><a href="{{logout}}" class="nav-options">Logout from {{user_mail}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -47,19 +48,19 @@
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">Name</label>
 							<div class="col-sm-7">
-								<input name="name" type="text" class="form-control" placeholder="Enter Name" />
+								<input required name="name" type="text" class="form-control" placeholder="Enter Name" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="email" class="col-sm-2 control-label">Email</label>
 							<div class="col-sm-7">
-								<input name="email" type="text" class="form-control" placeholder="Enter Email" />
+								<input required name="email" type="text" class="form-control" placeholder="Enter Email" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="message" class="col-sm-2 control-label">Message</label>
 							<div class="col-sm-7">
-								<textarea rows="5" name="message" class="form-control" placeholder="Enter Message"></textarea>
+								<textarea required rows="5" name="message" class="form-control" placeholder="Enter Message"></textarea>
 							</div>
 						</div>
 						<div class="col-sm-offset-2 col-sm-7">

@@ -57,26 +57,67 @@
 
 {% block content %}
 <div class="row">
-	<div class="col-md-7">
-	<h2 class="location">{{Area.buildingfloor}} - {{Area.area}}</h2>
-	<h3>This area has</h3>
-	<h3>{{Area.numSeats}} SEATS, 
+	<div class="col-md-7 study-area-content">
+	<h2 class="location location-content">{{Area.buildingfloor}} - {{Area.area}}</h2>
+	<form class="location-content" id="submit-rating" action="/rate-study" method="post">
+		<h3>Rate this location!</h3>
+		<div class="star-rating">
+			<input class="rb0" id="Ans_1" name="rating-input" type="radio" value="0" >                       
+			<input class="rb1" id="Ans_2" name="rating-input" type="radio" value="0.5" >
+			<input class="rb2" id="Ans_3" name="rating-input" type="radio" value="1" >
+			<input class="rb3" id="Ans_4" name="rating-input" type="radio" value="1.5" >    
+			<input class="rb4" id="Ans_5" name="rating-input" type="radio" value="2" >    
+			<input class="rb5" id="Ans_6" name="rating-input" type="radio" value="2.5" >    
+			<input class="rb6" id="Ans_7" name="rating-input" type="radio" value="3" >
+			<input class="rb7" id="Ans_8" name="rating-input" type="radio" value="3.5" >    
+			<input class="rb8" id="Ans_9" name="rating-input" type="radio" value="4" >
+			<input class="rb9" id="Ans_10" name="rating-input" type="radio" value="4.5" >
+			<input class="rb10" id="Ans_11" name="rating-input" type="radio" value="5" >
+			
+			<label for="Ans_1" class="star rb0l" onclick=""></label>
+			<label for="Ans_2" class="star rb1l" onclick=""></label>
+			<label for="Ans_3" class="star rb2l" onclick=""></label>
+			<label for="Ans_4" class="star rb3l" onclick=""></label>
+			<label for="Ans_5" class="star rb4l" onclick=""></label>
+			<label for="Ans_6" class="star rb5l" onclick=""></label>
+			<label for="Ans_7" class="star rb6l" onclick=""></label>
+			<label for="Ans_8" class="star rb7l" onclick=""></label>
+			<label for="Ans_9" class="star rb8l" onclick=""></label>
+			<label for="Ans_10" class="star rb9l" onclick=""></label>
+			<label for="Ans_11" class="star rb10l last" onclick=""></label>
+			
+			<div class="rating"></div>
+			<div class="rating-bg"></div> 
+			<input name="study-area" type="hidden" value="{{Area.area}}">
+			<p>{{(ave_rating|float - 1) / 2}} out of 5 stars ({{numraters}} voters)</p>
+		</div>
+		<button class="btn btn-warning" type="submit">Rate it!</button>
+		<br><br>
+	</form>
+	<div class="location-content">
+	<h3>Amenities available</h3>
+	<p>{{Area.numSeats}} SEATS, 
 	{% if Area.sofas=="on" %} 
 	some are SOFAS
 	{% else %}
 	none are SOFAS
 	{% endif %}
-	</h3>
-	<h3>{{Area.numTables}} TABLES</h3>
-	<h3>{{Area.numSockets}} SOCKETS</h3>
+	</p>
+	<p>{{Area.numTables}} TABLES</p>
+	<p>{{Area.numSockets}} SOCKETS</p>
 	{% if Area.aircon=="on" %}
-	<h3>Has AIR-CONDITIONING</h3>
+	<p>Has AIR-CONDITIONING</p>
 	{% else %}
-	<h3>Has no AIR-CONDITIONING</h3>
+	<p>Has no AIR-CONDITIONING</p>
 	{% endif %}
-	<p>To get here: {{Area.directions}}</p>
+	<br>
 	</div>
-	
+	<div>
+	<h3>To get here:</h3>
+	<p>{{Area.directions}}</p>
+	<br><br>
+	</div>
+	</div>
 	<div class="col-md-5">
 		<!--Carousel-->
 		<div id="myCarousel" class="carousel slide">

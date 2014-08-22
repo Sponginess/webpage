@@ -24,7 +24,7 @@
 		<div class="form-group amenities">
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="wantsHandicapped"> Only handicapped toilets
+					<input type="checkbox" name="wantsHandicapped"> Only handicap-friendly toilets
 				</label>
 			</div>
 		</div>
@@ -34,14 +34,17 @@
 </div>
 {% endblock %}
 {% block content %}
+<h2 class="location">{{Area.buildingfloor}} - {{Area.area}}</h2>
 <h2 class="location">{{Area.area}}</h2>
 <div class="row">
 	<div class="col-md-3">
+		<div class="toilet-sign text-center"><i class="fa fa-female toilet"></i></div>
 		<h3 class="text-center">LADIES</h3>
 		<h4 class="text-center">Cleanliness: {{Area.cleanlinessLadies}} out of 10</h4>
 	</div>
 	<div class="col-md-6">
 	{%if Area.hasHandicapped == "on"%}
+		<div class="toilet-sign text-center"><i class="fa fa-wheelchair toilet"></i></div>
 		<h3 class="text-center">HANDICAPPED</h3>
 		<h4 class="text-center">Cleanliness: {{Area.cleanlinessHandicapped}} out of 10</h4>
 	{%else%}
@@ -49,8 +52,14 @@
 	{%endif%}
 	</div>
 	<div class="col-md-3">
+		<div class="toilet-sign text-center"><i class="fa fa-male toilet"></i></div>
 		<h3 class="text-center">GENTS</h3>
 		<h4 class="text-center">Cleanliness: {{Area.cleanlinessLadies}} out of 10</h4>
 	</div>
+</div>
+<hr>
+<div class="row">
+	<h3>To get here</h3>
+	<p>{{Area.directions}}</p>
 </div>
 {% endblock %}

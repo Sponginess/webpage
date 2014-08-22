@@ -23,7 +23,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">
+					<a href="/index-user" class="navbar-brand">
 						<img id="logo" src="img/Logo5small.png"/>
 					</a>
 				</div>
@@ -33,7 +33,7 @@
 						<li><a href="/shop" class="nav-options"><i class="fa fa-shopping-cart"></i> Shop</a></li>
 
 						<li class="active"><a href="/poop" class="nav-options"><span><i class="fa fa-male"></i><i class="fa fa-female"></i></span> Poop</a></li>
-						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li>
+						<li><a href="/contact" class="nav-options"><i class="fa fa-envelope"></i> Contact</a></li><li><a href="{{logout}}" class="nav-options">Logout from {{user_mail}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 				<div class="form-group amenities">
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" name="wantsHandicapped"> Only handicapped toilets
+							<input type="checkbox" name="wantsHandicapped"> Only handicap-friendly toilets
 						</label>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 			{% for location in locations %}		
 			<div class="row row-table row-valid">
 				<div class="col-md-7">
-					<h4>{{ location.area }}</h4>
+					<h4>{{ location.area }}, {{ location.buildingfloor }}</h4>
 					<h4>Overall cleanliness: {{location.cleanliness}} out of 10</h4>
 					<h4>
 						{%if location.hasHandicapped=="on"%}

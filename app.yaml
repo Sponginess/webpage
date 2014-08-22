@@ -23,11 +23,16 @@ handlers:
 - url: /lib
   static_dir: lib
 
-# Handler for all pages
-# Login not required
+# Handler for front page
+- url: /
+  script: secondhome.app
+   
+ 
+# All other pages require login
 - url: /.*
   script: secondhome.app
-  
+  login: required
+ 
 libraries:
 - name: jinja2
   version: latest
